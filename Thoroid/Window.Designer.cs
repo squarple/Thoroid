@@ -31,17 +31,17 @@ namespace Thoroid
         {
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonPoints = new System.Windows.Forms.RadioButton();
-            this.radioButtonLines = new System.Windows.Forms.RadioButton();
             this.radioButtonPolygons = new System.Windows.Forms.RadioButton();
+            this.radioButtonLines = new System.Windows.Forms.RadioButton();
+            this.radioButtonPoints = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButtonAxonometric = new System.Windows.Forms.RadioButton();
-            this.radioButtonOblique = new System.Windows.Forms.RadioButton();
-            this.radioButtonUsual2D = new System.Windows.Forms.RadioButton();
-            this.radioButtonPerspective = new System.Windows.Forms.RadioButton();
             this.radioButtonHorizontal = new System.Windows.Forms.RadioButton();
             this.radioButtonProfile = new System.Windows.Forms.RadioButton();
             this.radioButtonOrthogonal = new System.Windows.Forms.RadioButton();
+            this.radioButtonPerspective = new System.Windows.Forms.RadioButton();
+            this.radioButtonAxonometric = new System.Windows.Forms.RadioButton();
+            this.radioButtonOblique = new System.Windows.Forms.RadioButton();
+            this.radioButtonUsual2D = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxRadiusBig = new System.Windows.Forms.TextBox();
             this.textBoxRadiusSmall = new System.Windows.Forms.TextBox();
@@ -117,16 +117,16 @@ namespace Thoroid
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // radioButtonPoints
+            // radioButtonPolygons
             // 
-            this.radioButtonPoints.AutoSize = true;
-            this.radioButtonPoints.Location = new System.Drawing.Point(7, 20);
-            this.radioButtonPoints.Name = "radioButtonPoints";
-            this.radioButtonPoints.Size = new System.Drawing.Size(71, 17);
-            this.radioButtonPoints.TabIndex = 0;
-            this.radioButtonPoints.TabStop = true;
-            this.radioButtonPoints.Text = "realPoints";
-            this.radioButtonPoints.UseVisualStyleBackColor = true;
+            this.radioButtonPolygons.AutoSize = true;
+            this.radioButtonPolygons.Location = new System.Drawing.Point(7, 65);
+            this.radioButtonPolygons.Name = "radioButtonPolygons";
+            this.radioButtonPolygons.Size = new System.Drawing.Size(67, 17);
+            this.radioButtonPolygons.TabIndex = 2;
+            this.radioButtonPolygons.TabStop = true;
+            this.radioButtonPolygons.Text = "polygons";
+            this.radioButtonPolygons.UseVisualStyleBackColor = true;
             // 
             // radioButtonLines
             // 
@@ -139,16 +139,16 @@ namespace Thoroid
             this.radioButtonLines.Text = "lines";
             this.radioButtonLines.UseVisualStyleBackColor = true;
             // 
-            // radioButtonPolygons
+            // radioButtonPoints
             // 
-            this.radioButtonPolygons.AutoSize = true;
-            this.radioButtonPolygons.Location = new System.Drawing.Point(7, 65);
-            this.radioButtonPolygons.Name = "radioButtonPolygons";
-            this.radioButtonPolygons.Size = new System.Drawing.Size(67, 17);
-            this.radioButtonPolygons.TabIndex = 2;
-            this.radioButtonPolygons.TabStop = true;
-            this.radioButtonPolygons.Text = "polygons";
-            this.radioButtonPolygons.UseVisualStyleBackColor = true;
+            this.radioButtonPoints.AutoSize = true;
+            this.radioButtonPoints.Location = new System.Drawing.Point(7, 20);
+            this.radioButtonPoints.Name = "radioButtonPoints";
+            this.radioButtonPoints.Size = new System.Drawing.Size(71, 17);
+            this.radioButtonPoints.TabIndex = 0;
+            this.radioButtonPoints.TabStop = true;
+            this.radioButtonPoints.Text = "realPoints";
+            this.radioButtonPoints.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -164,50 +164,6 @@ namespace Thoroid
             this.groupBox2.Size = new System.Drawing.Size(190, 129);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            // 
-            // radioButtonAxonometric
-            // 
-            this.radioButtonAxonometric.AutoSize = true;
-            this.radioButtonAxonometric.Location = new System.Drawing.Point(7, 65);
-            this.radioButtonAxonometric.Name = "radioButtonAxonometric";
-            this.radioButtonAxonometric.Size = new System.Drawing.Size(83, 17);
-            this.radioButtonAxonometric.TabIndex = 2;
-            this.radioButtonAxonometric.TabStop = true;
-            this.radioButtonAxonometric.Text = "Axonometric";
-            this.radioButtonAxonometric.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonOblique
-            // 
-            this.radioButtonOblique.AutoSize = true;
-            this.radioButtonOblique.Location = new System.Drawing.Point(7, 42);
-            this.radioButtonOblique.Name = "radioButtonOblique";
-            this.radioButtonOblique.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonOblique.TabIndex = 1;
-            this.radioButtonOblique.TabStop = true;
-            this.radioButtonOblique.Text = "Oblique";
-            this.radioButtonOblique.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonUsual2D
-            // 
-            this.radioButtonUsual2D.AutoSize = true;
-            this.radioButtonUsual2D.Location = new System.Drawing.Point(7, 20);
-            this.radioButtonUsual2D.Name = "radioButtonUsual2D";
-            this.radioButtonUsual2D.Size = new System.Drawing.Size(70, 17);
-            this.radioButtonUsual2D.TabIndex = 0;
-            this.radioButtonUsual2D.TabStop = true;
-            this.radioButtonUsual2D.Text = "usual_2D";
-            this.radioButtonUsual2D.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPerspective
-            // 
-            this.radioButtonPerspective.AutoSize = true;
-            this.radioButtonPerspective.Location = new System.Drawing.Point(7, 88);
-            this.radioButtonPerspective.Name = "radioButtonPerspective";
-            this.radioButtonPerspective.Size = new System.Drawing.Size(81, 17);
-            this.radioButtonPerspective.TabIndex = 3;
-            this.radioButtonPerspective.TabStop = true;
-            this.radioButtonPerspective.Text = "Perspective";
-            this.radioButtonPerspective.UseVisualStyleBackColor = true;
             // 
             // radioButtonHorizontal
             // 
@@ -241,6 +197,50 @@ namespace Thoroid
             this.radioButtonOrthogonal.TabStop = true;
             this.radioButtonOrthogonal.Text = "Orthogonal";
             this.radioButtonOrthogonal.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPerspective
+            // 
+            this.radioButtonPerspective.AutoSize = true;
+            this.radioButtonPerspective.Location = new System.Drawing.Point(7, 88);
+            this.radioButtonPerspective.Name = "radioButtonPerspective";
+            this.radioButtonPerspective.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonPerspective.TabIndex = 3;
+            this.radioButtonPerspective.TabStop = true;
+            this.radioButtonPerspective.Text = "Perspective";
+            this.radioButtonPerspective.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAxonometric
+            // 
+            this.radioButtonAxonometric.AutoSize = true;
+            this.radioButtonAxonometric.Location = new System.Drawing.Point(7, 65);
+            this.radioButtonAxonometric.Name = "radioButtonAxonometric";
+            this.radioButtonAxonometric.Size = new System.Drawing.Size(83, 17);
+            this.radioButtonAxonometric.TabIndex = 2;
+            this.radioButtonAxonometric.TabStop = true;
+            this.radioButtonAxonometric.Text = "Axonometric";
+            this.radioButtonAxonometric.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonOblique
+            // 
+            this.radioButtonOblique.AutoSize = true;
+            this.radioButtonOblique.Location = new System.Drawing.Point(7, 42);
+            this.radioButtonOblique.Name = "radioButtonOblique";
+            this.radioButtonOblique.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonOblique.TabIndex = 1;
+            this.radioButtonOblique.TabStop = true;
+            this.radioButtonOblique.Text = "Oblique";
+            this.radioButtonOblique.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonUsual2D
+            // 
+            this.radioButtonUsual2D.AutoSize = true;
+            this.radioButtonUsual2D.Location = new System.Drawing.Point(7, 20);
+            this.radioButtonUsual2D.Name = "radioButtonUsual2D";
+            this.radioButtonUsual2D.Size = new System.Drawing.Size(70, 17);
+            this.radioButtonUsual2D.TabIndex = 0;
+            this.radioButtonUsual2D.TabStop = true;
+            this.radioButtonUsual2D.Text = "usual_2D";
+            this.radioButtonUsual2D.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -318,6 +318,7 @@ namespace Thoroid
             this.buttonDraw.TabIndex = 12;
             this.buttonDraw.Text = "draw";
             this.buttonDraw.UseVisualStyleBackColor = true;
+            this.buttonDraw.Click += new System.EventHandler(this.buttonDraw_Click);
             // 
             // buttonUpdate
             // 
