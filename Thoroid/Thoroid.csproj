@@ -52,6 +52,7 @@
     <Compile Include="Points.cs" />
     <Compile Include="Rendering\Rendering.cs" />
     <Compile Include="Toroid.cs" />
+    <Compile Include="Transformations.cs" />
     <Compile Include="Window.cs">
       <SubType>Form</SubType>
     </Compile>

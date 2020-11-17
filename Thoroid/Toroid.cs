@@ -93,8 +93,8 @@ namespace Thoroid
             {
                 for (var j = 0; j < approximationSmall; j++)
                 {
-                    var psi = (double) i * 360 / (approximationBig - 1);
-                    var phi = (double) j * 360 / (approximationSmall - 1);
+                    var psi = (double) i * 360 / (approximationBig - 1) - 90;
+                    var phi = (double) j * 360 / (approximationSmall - 1) - 90;
                     realPoints[i, j] = new Points
                     {
                         X = (radiusBig + radiusSmall * Cos(psi.DegToRad())) * Cos(phi.DegToRad()),
@@ -103,6 +103,55 @@ namespace Thoroid
                     };
                 }
             }
+        }
+
+        public void Move(double dX, double dY, double dZ)
+        {
+            for (var i = 0; i < realPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < realPoints.GetLength(1); j++)
+                {
+                    realPoints[i, j] = Transformations.Move(realPoints[i, j], dX, dY, dZ);
+                }
+            }
+            DrawFigure();
+        }
+
+        public void Scale(double sX, double sY, double sZ)
+        {
+            for (var i = 0; i < realPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < realPoints.GetLength(1); j++)
+                {
+                    realPoints[i, j] = Transformations.Scale(realPoints[i, j], sX, sY, sZ);
+                }
+            }
+
+            DrawFigure();
+        }
+
+        public void Rotate(double thetaX, double thetaY, double thetaZ)
+        {
+            Transformations.CreateRotateMatrix(thetaX, thetaY, thetaZ);
+            for (var i = 0; i < realPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < realPoints.GetLength(1); j++)
+                {
+                    realPoints[i, j] = Transformations.Rotate(realPoints[i, j]);
+                }
+            }
+
+            DrawFigure();
+        }
+
+        public static void ChangeDrawType(DrawTypeEnum type)
+        {
+            _drawType = type;
+        }
+
+        public static void ChangeViewType(ViewTypeEnum type)
+        {
+            _viewType = type;
         }
     }
 }
