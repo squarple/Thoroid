@@ -131,6 +131,20 @@ namespace Thoroid
             DrawType(ref transformPoints);
         }
 
+        private void AxonometricRendering()
+        {
+            Array.Copy(realPoints, transformPoints, realPoints.Length);
+
+            for (var i = 0; i < transformPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < transformPoints.GetLength(1); j++)
+                {
+                    transformPoints[i, j] = transformPoints[i, j].AxonometryProjection(Data.AxonometryPhi, Data.AxonometryTheta);
+                }
+            }
+            DrawType(ref transformPoints);
+        }
+
         private void DrawFigure()
         {
             switch (_viewType)
@@ -142,7 +156,7 @@ namespace Thoroid
                     ObliqueRendering();
                     break;
                 case ViewTypeEnum.Axonometric:
-                    //AxonometricRendering();
+                    AxonometricRendering();
                     break;
                 case ViewTypeEnum.Perspective:
                     //PerpectiveRendering();

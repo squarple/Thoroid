@@ -75,5 +75,17 @@ namespace Thoroid
             };
             return point.pointMatrix.MatrixMultiplication14X44(matrix);
         }
+
+        public static Points AxonometryProjection(this Points point, double phi, double theta)
+        {
+            double[,] matrix =
+            {
+                { Cos(theta.DegToRad()),  Sin(phi.DegToRad()) * Sin(theta.DegToRad()), 0, 0 },
+                { 0                    ,  Cos(phi.DegToRad())                        , 0, 0 },
+                { Sin(theta.DegToRad()), -Sin(phi.DegToRad()) * Cos(theta.DegToRad()), 0, 0 },
+                { 0                    ,  0                                          , 0, 0 }
+            };
+            return point.pointMatrix.MatrixMultiplication14X44(matrix);
+        }
     }
 }

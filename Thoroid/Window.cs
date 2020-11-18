@@ -27,6 +27,8 @@ namespace Thoroid
         {
             Data.ObliqueL = Convert.ToDouble(textBoxObliqueL.Text);
             Data.ObliqueAlpha = Convert.ToDouble(textBoxObliqueAlpha.Text);
+            Data.AxonometryPhi = Convert.ToDouble(textBoxAxonometryPhi.Text);
+            Data.AxonometryTheta = Convert.ToDouble(textBoxAxonometryTheta.Text);
 
             tor.Update();
         }
