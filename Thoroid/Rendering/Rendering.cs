@@ -8,7 +8,7 @@ namespace Thoroid.Rendering
 {
     public class Rendering
     {
-        private readonly Pen _pen = new Pen(Color.Blue, 1);
+        private readonly Pen pen = new Pen(Color.Blue, 1);
 
         private static PictureBox pic;
         private static Bitmap bmp;
@@ -30,17 +30,32 @@ namespace Thoroid.Rendering
             graph.ScaleTransform(1, -1);
         }
 
+        public void PointsRendering(ref Points[,] points)
+        {
+            graph.Clear(Color.Transparent);
+            Random random = new Random();
+            foreach (var temp in points)
+            {
+                using (var newPen = new Pen(Color.FromArgb(random.Next(255), random.Next(255), random.Next(255)), 1))
+                {
+                    graph.DrawEllipse(newPen, (int)temp.X, (int)temp.Y, 1, 1);
+                }
+            }
+        }
+
         public void LinesRendering(ref Points[,] realPoints)
         {
             graph.Clear(Color.Transparent);
 
-            coordList = new List<_4Points>();   //лист полигонов из 4 точек
+            coordList = new List<_4Points>();
             coordList = CreatePolygons(realPoints);
 
-            foreach (var temp in coordList)
-                graph.DrawPolygon(_pen, temp.points);
+            Random random = new Random();
 
-            //_pic.Image = _bmp;
+            foreach (var temp in coordList)
+            {
+                graph.DrawPolygon(pen, temp.points);
+            }
         }
 
         private List<_4Points> CreatePolygons(Points[,] p)

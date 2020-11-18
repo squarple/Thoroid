@@ -200,7 +200,7 @@ namespace Thoroid
             switch (_drawType)
             {
                 case DrawTypeEnum.Points:
-                    //render.PointsRendering(ref points);
+                    render.PointsRendering(ref points);
                     break;
                 case DrawTypeEnum.Lines:
                     render.LinesRendering(ref points);
