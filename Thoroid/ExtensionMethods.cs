@@ -87,5 +87,27 @@ namespace Thoroid
             };
             return point.pointMatrix.MatrixMultiplication14X44(matrix);
         }
+
+        public static Points PerspectiveProjection(this Points point, double d)
+        {
+            if (point.Z >= 0 && point.Z < 0.1)
+                point.Z = 0.1;
+            else if (point.Z < 0 && point.Z > -0.1)
+                point.Z = -0.1;
+
+            return new Points(point.X / (point.pointMatrix[0, 2] / d), point.Y / (point.pointMatrix[0, 2] / d), d);
+        }
+
+        public static Points ViewMatrix(this Points point, double theta, double phi, double ro)
+        {
+            double[,] viewMatrix =
+            {
+                {-Sin(theta.DegToRad()), -Cos(phi.DegToRad()) * Cos(theta.DegToRad()), -Sin(phi.DegToRad()) * Cos(theta.DegToRad()), 0 },
+                { Cos(theta.DegToRad()), -Cos(phi.DegToRad()) * Sin(theta.DegToRad()), -Sin(phi.DegToRad()) * Sin(theta.DegToRad()), 0 },
+                { 0                    ,  Sin(phi.DegToRad())                        , -Cos(phi.DegToRad())                        , 0 },
+                { 0                    ,  0                                          ,  ro                                         , 1 }
+            };
+            return point.pointMatrix.MatrixMultiplication14X44(viewMatrix);
+        }
     }
 }

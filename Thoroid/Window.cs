@@ -30,6 +30,11 @@ namespace Thoroid
             Data.AxonometryPhi = Convert.ToDouble(textBoxAxonometryPhi.Text);
             Data.AxonometryTheta = Convert.ToDouble(textBoxAxonometryTheta.Text);
 
+            Data.PerspectiveD = Convert.ToDouble(textBoxPerspectiveD.Text);
+            Data.PerspectivePhi = Convert.ToDouble(textBoxPerspectivePhi.Text);
+            Data.PerspectiveTheta = Convert.ToDouble(textBoxPerspectiveTheta.Text);
+            Data.PerspectiveRo = Convert.ToDouble(textBoxPerspectiveRo.Text);
+
             tor.Update();
         }
 

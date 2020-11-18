@@ -645,7 +645,7 @@ namespace Thoroid
             this.textBoxPerspectivePhi.Name = "textBoxPerspectivePhi";
             this.textBoxPerspectivePhi.Size = new System.Drawing.Size(97, 20);
             this.textBoxPerspectivePhi.TabIndex = 46;
-            this.textBoxPerspectivePhi.Text = "30";
+            this.textBoxPerspectivePhi.Text = "0";
             // 
             // textBoxPerspectiveD
             // 
@@ -653,7 +653,7 @@ namespace Thoroid
             this.textBoxPerspectiveD.Name = "textBoxPerspectiveD";
             this.textBoxPerspectiveD.Size = new System.Drawing.Size(97, 20);
             this.textBoxPerspectiveD.TabIndex = 45;
-            this.textBoxPerspectiveD.Text = "30";
+            this.textBoxPerspectiveD.Text = "200";
             // 
             // label17
             // 
@@ -687,7 +687,7 @@ namespace Thoroid
             this.textBoxPerspectiveTheta.Name = "textBoxPerspectiveTheta";
             this.textBoxPerspectiveTheta.Size = new System.Drawing.Size(97, 20);
             this.textBoxPerspectiveTheta.TabIndex = 50;
-            this.textBoxPerspectiveTheta.Text = "30";
+            this.textBoxPerspectiveTheta.Text = "-90";
             // 
             // buttonAuto
             // 
