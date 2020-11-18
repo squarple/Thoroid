@@ -145,7 +145,7 @@ namespace Thoroid
             DrawType(ref transformPoints);
         }
 
-        private void PerpectiveRendering()
+        private void PerspectiveRendering()
         {
             Array.Copy(realPoints, transformPoints, realPoints.Length);
 
@@ -176,7 +176,7 @@ namespace Thoroid
                     AxonometricRendering();
                     break;
                 case ViewTypeEnum.Perspective:
-                    PerpectiveRendering();
+                    PerspectiveRendering();
                     break;
                 case ViewTypeEnum.Orthogonal:
                     OrthogonalRendering();
@@ -206,7 +206,7 @@ namespace Thoroid
                     render.LinesRendering(ref points);
                     break;
                 case DrawTypeEnum.Polygons:
-                    //render.PolygonsRendering(ref points);
+                    render.PolygonsRendering(ref points);
                     break;
             }
         }
