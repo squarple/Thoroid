@@ -25,6 +25,9 @@ namespace Thoroid
 
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
+            Data.ObliqueL = Convert.ToDouble(textBoxObliqueL.Text);
+            Data.ObliqueAlpha = Convert.ToDouble(textBoxObliqueAlpha.Text);
+
             tor.Update();
         }
 

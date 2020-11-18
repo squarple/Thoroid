@@ -1,10 +1,12 @@
-﻿namespace Thoroid
+﻿using static System.Math;
+
+namespace Thoroid
 {
     public static class ExtensionMethods
     {
         public static double DegToRad(this double angle)
         {
-            return angle * System.Math.PI / 180;
+            return angle * PI / 180;
         }
 
         public static Points MatrixMultiplication14X44(this double[,] matrixA, double[,] matrixB)
@@ -60,6 +62,18 @@
         public static Points HorizontalProjection(this Points point)
         {
             return new Points(point.X, point.Z, 0);
+        }
+
+        public static Points ObliqueProjection(this Points point, double l, double alpha)
+        {
+            double[,] matrix =
+            {
+                {1                        , 0                        , 0, 0},
+                {0                        , 1                        , 0, 0},
+                {l * Cos(alpha.DegToRad()), l * Sin(alpha.DegToRad()), 0, 0},
+                {0                        , 0                        , 0, 1}
+            };
+            return point.pointMatrix.MatrixMultiplication14X44(matrix);
         }
     }
 }

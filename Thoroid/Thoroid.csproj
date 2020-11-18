@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data.cs" />
     <Compile Include="Enums\DrawTypeEnum.cs" />
     <Compile Include="Enums\ViewTypeEnum.cs" />
     <Compile Include="ExtensionMethods.cs" />

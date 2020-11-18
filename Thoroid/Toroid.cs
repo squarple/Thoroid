@@ -117,6 +117,20 @@ namespace Thoroid
             DrawType(ref transformPoints);
         }
 
+        private void ObliqueRendering()
+        {
+            Array.Copy(realPoints, transformPoints, realPoints.Length);
+
+            for (var i = 0; i < transformPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < transformPoints.GetLength(1); j++)
+                {
+                    transformPoints[i, j] = transformPoints[i, j].ObliqueProjection(Data.ObliqueL, Data.ObliqueAlpha);
+                }
+            }
+            DrawType(ref transformPoints);
+        }
+
         private void DrawFigure()
         {
             switch (_viewType)
@@ -125,7 +139,7 @@ namespace Thoroid
                     UsualRendering();
                     break;
                 case ViewTypeEnum.Oblique:
-                    //ObliqueRendering();
+                    ObliqueRendering();
                     break;
                 case ViewTypeEnum.Axonometric:
                     //AxonometricRendering();
