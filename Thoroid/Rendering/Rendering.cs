@@ -10,35 +10,35 @@ namespace Thoroid.Rendering
     {
         private readonly Pen _pen = new Pen(Color.Blue, 1);
 
-        private static PictureBox _pic;
-        private static Bitmap _bmp;
-        private static Graphics _graph;
-        private List<_4Points> _coordList;
+        private static PictureBox pic;
+        private static Bitmap bmp;
+        private static Graphics graph;
+        private List<_4Points> coordList;
 
         public Rendering(ref PictureBox pictureBox)
         {
-            _pic = pictureBox;
-            _bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
+            pic = pictureBox;
+            bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
             //pictureBox.Image = new Bitmap(pictureBox.Width, pictureBox.Height);
 
             //_graph = Graphics.FromImage(pictureBox.Image);
-            _graph = pictureBox.CreateGraphics();
+            graph = pictureBox.CreateGraphics();
             //_graph = Graphics.FromImage(_bmp);
 
-            _graph.SmoothingMode = SmoothingMode.AntiAlias;
-            _graph.TranslateTransform((float)pictureBox.Width / 2, (float)pictureBox.Height / 2);
-            _graph.ScaleTransform(1, -1);
+            graph.SmoothingMode = SmoothingMode.AntiAlias;
+            graph.TranslateTransform((float)pictureBox.Width / 2, (float)pictureBox.Height / 2);
+            graph.ScaleTransform(1, -1);
         }
 
         public void LinesRendering(ref Points[,] realPoints)
         {
-            _graph.Clear(Color.Transparent);
+            graph.Clear(Color.Transparent);
 
-            _coordList = new List<_4Points>();   //лист полигонов из 4 точек
-            _coordList = CreatePolygons(realPoints);
+            coordList = new List<_4Points>();   //лист полигонов из 4 точек
+            coordList = CreatePolygons(realPoints);
 
-            foreach (var temp in _coordList)
-                _graph.DrawPolygon(_pen, temp.points);
+            foreach (var temp in coordList)
+                graph.DrawPolygon(_pen, temp.points);
 
             //_pic.Image = _bmp;
         }

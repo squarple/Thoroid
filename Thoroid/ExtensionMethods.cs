@@ -47,6 +47,11 @@
             return matrixC;
         }
 
+        public static Points OrthogonalProjection(this Points point)
+        {
+            return new Points(point.X, point.Y, 0);
+        }
+
         public static Points ProfileProjection(this Points point)
         {
             return new Points(point.Z, point.Y, 0);
