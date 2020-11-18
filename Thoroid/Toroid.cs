@@ -78,6 +78,19 @@ namespace Thoroid
             DrawFigure();
         }
 
+        private void ProfileRendering()
+        {
+            Array.Copy(realPoints, transformPoints, realPoints.Length);
+            for (var i = 0; i < transformPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < transformPoints.GetLength(1); j++)
+                {
+                    transformPoints[i, j] = transformPoints[i, j].ProfileProjection();
+                }
+            }
+            DrawType(ref transformPoints);
+        }
+
         private void HorizontalRendering()
         {
             Array.Copy(realPoints, transformPoints, realPoints.Length);
@@ -85,7 +98,7 @@ namespace Thoroid
             {
                 for (var j = 0; j < transformPoints.GetLength(1); j++)
                 {
-                    transformPoints[i, j] = (transformPoints[i, j]).HorizontalProjection();
+                    transformPoints[i, j] = transformPoints[i, j].HorizontalProjection();
                 }
             }
             DrawType(ref transformPoints);
@@ -111,7 +124,7 @@ namespace Thoroid
                     //OrthogonalRendering();
                     break;
                 case ViewTypeEnum.Profile:
-                    //ProfileRendering();
+                    ProfileRendering();
                     break;
                 case ViewTypeEnum.Horizontal:
                     HorizontalRendering();
