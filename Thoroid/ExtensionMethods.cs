@@ -46,5 +46,10 @@
 
             return matrixC;
         }
+
+        public static Points HorizontalProjection(this Points point)
+        {
+            return new Points(point.X, point.Z, 0);
+        }
     }
 }

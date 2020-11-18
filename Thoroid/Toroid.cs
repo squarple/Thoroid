@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Thoroid.Enums;
 using static System.Math;
 
@@ -14,7 +15,7 @@ namespace Thoroid
         private readonly int radiusSmall;
 
         private Points[,] realPoints;
-        //private Points[,] transformPoints;
+        private Points[,] transformPoints;
 
         private static DrawTypeEnum _drawType = DrawTypeEnum.Lines;
         private static ViewTypeEnum _viewType = ViewTypeEnum.Usual;
@@ -27,7 +28,7 @@ namespace Thoroid
             this.radiusSmall = radiusSmall;
 
             realPoints = new Points[approximationBig, approximationSmall];
-            //transformPoints = new Points[approximationBig, approximationSmall];
+            transformPoints = new Points[approximationBig, approximationSmall];
             CreateCoordinates();
 
             render = new Rendering.Rendering(ref picture);
@@ -36,6 +37,58 @@ namespace Thoroid
         public void Update()
         {
             DrawFigure();
+        }
+
+        public void Move(double dX, double dY, double dZ)
+        {
+            for (var i = 0; i < realPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < realPoints.GetLength(1); j++)
+                {
+                    realPoints[i, j] = Transformations.Move(realPoints[i, j], dX, dY, dZ);
+                }
+            }
+            DrawFigure();
+        }
+
+        public void Scale(double sX, double sY, double sZ)
+        {
+            for (var i = 0; i < realPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < realPoints.GetLength(1); j++)
+                {
+                    realPoints[i, j] = Transformations.Scale(realPoints[i, j], sX, sY, sZ);
+                }
+            }
+
+            DrawFigure();
+        }
+
+        public void Rotate(double thetaX, double thetaY, double thetaZ)
+        {
+            Transformations.CreateRotateMatrix(thetaX, thetaY, thetaZ);
+            for (var i = 0; i < realPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < realPoints.GetLength(1); j++)
+                {
+                    realPoints[i, j] = Transformations.Rotate(realPoints[i, j]);
+                }
+            }
+
+            DrawFigure();
+        }
+
+        private void HorizontalRendering()
+        {
+            Array.Copy(realPoints, transformPoints, realPoints.Length);
+            for (var i = 0; i < transformPoints.GetLength(0); i++)
+            {
+                for (var j = 0; j < transformPoints.GetLength(1); j++)
+                {
+                    transformPoints[i, j] = (transformPoints[i, j]).HorizontalProjection();
+                }
+            }
+            DrawType(ref transformPoints);
         }
 
         private void DrawFigure()
@@ -61,7 +114,7 @@ namespace Thoroid
                     //ProfileRendering();
                     break;
                 case ViewTypeEnum.Horizontal:
-                    //HorizontalRendering();
+                    HorizontalRendering();
                     break;
             }
         }
@@ -103,45 +156,6 @@ namespace Thoroid
                     };
                 }
             }
-        }
-
-        public void Move(double dX, double dY, double dZ)
-        {
-            for (var i = 0; i < realPoints.GetLength(0); i++)
-            {
-                for (var j = 0; j < realPoints.GetLength(1); j++)
-                {
-                    realPoints[i, j] = Transformations.Move(realPoints[i, j], dX, dY, dZ);
-                }
-            }
-            DrawFigure();
-        }
-
-        public void Scale(double sX, double sY, double sZ)
-        {
-            for (var i = 0; i < realPoints.GetLength(0); i++)
-            {
-                for (var j = 0; j < realPoints.GetLength(1); j++)
-                {
-                    realPoints[i, j] = Transformations.Scale(realPoints[i, j], sX, sY, sZ);
-                }
-            }
-
-            DrawFigure();
-        }
-
-        public void Rotate(double thetaX, double thetaY, double thetaZ)
-        {
-            Transformations.CreateRotateMatrix(thetaX, thetaY, thetaZ);
-            for (var i = 0; i < realPoints.GetLength(0); i++)
-            {
-                for (var j = 0; j < realPoints.GetLength(1); j++)
-                {
-                    realPoints[i, j] = Transformations.Rotate(realPoints[i, j]);
-                }
-            }
-
-            DrawFigure();
         }
 
         public static void ChangeDrawType(DrawTypeEnum type)
