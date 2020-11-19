@@ -73,7 +73,7 @@ namespace Thoroid
                 {l * Cos(alpha.DegToRad()), l * Sin(alpha.DegToRad()), 0, 0},
                 {0                        , 0                        , 0, 1}
             };
-            return point.pointMatrix.MatrixMultiplication14X44(matrix);
+            return point.PointMatrix.MatrixMultiplication14X44(matrix);
         }
 
         public static Points AxonometryProjection(this Points point, double phi, double theta)
@@ -85,7 +85,7 @@ namespace Thoroid
                 { Sin(theta.DegToRad()), -Sin(phi.DegToRad()) * Cos(theta.DegToRad()), 0, 0 },
                 { 0                    ,  0                                          , 0, 0 }
             };
-            return point.pointMatrix.MatrixMultiplication14X44(matrix);
+            return point.PointMatrix.MatrixMultiplication14X44(matrix);
         }
 
         public static Points PerspectiveProjection(this Points point, double d)
@@ -95,7 +95,7 @@ namespace Thoroid
             else if (point.Z < 0 && point.Z > -0.1)
                 point.Z = -0.1;
 
-            return new Points(point.X / (point.pointMatrix[0, 2] / d), point.Y / (point.pointMatrix[0, 2] / d), d);
+            return new Points(point.X / (point.PointMatrix[0, 2] / d), point.Y / (point.PointMatrix[0, 2] / d), d);
         }
 
         public static Points ViewMatrix(this Points point, double theta, double phi, double ro)
@@ -107,7 +107,7 @@ namespace Thoroid
                 { 0                    ,  Sin(phi.DegToRad())                        , -Cos(phi.DegToRad())                        , 0 },
                 { 0                    ,  0                                          ,  ro                                         , 1 }
             };
-            return point.pointMatrix.MatrixMultiplication14X44(viewMatrix);
+            return point.PointMatrix.MatrixMultiplication14X44(viewMatrix);
         }
     }
 }

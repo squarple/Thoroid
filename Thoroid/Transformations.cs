@@ -16,7 +16,7 @@ namespace Thoroid
                 {dx, dy, dz, 1}
             };
 
-            return point.pointMatrix.MatrixMultiplication14X44(moveMatrix);
+            return point.PointMatrix.MatrixMultiplication14X44(moveMatrix);
         }
 
         public static Points Scale(Points point, double sx, double sy, double sz)
@@ -29,7 +29,7 @@ namespace Thoroid
                 {0 , 0 , 0 , 1}
             };
 
-            return point.pointMatrix.MatrixMultiplication14X44(scaleMatrix);
+            return point.PointMatrix.MatrixMultiplication14X44(scaleMatrix);
         }
 
         public static void CreateRotateMatrix(double thetaX, double thetaY, double thetaZ)
@@ -62,7 +62,7 @@ namespace Thoroid
 
         public static Points Rotate(Points p)
         {
-            return p.pointMatrix.MatrixMultiplication14X44(rotateMatrix);
+            return p.PointMatrix.MatrixMultiplication14X44(rotateMatrix);
         }
     }
 }
