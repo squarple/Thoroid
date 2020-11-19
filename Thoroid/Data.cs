@@ -4,8 +4,8 @@ namespace Thoroid
 {
     public static class Data
     {
-        public static DrawTypeEnum DrawType { get; set; } = DrawTypeEnum.Lines;
-        public static ViewTypeEnum ViewType { get; set; } = ViewTypeEnum.Usual;
+        public static DrawType DrawType { get; set; } = DrawType.Lines;
+        public static ViewType ViewType { get; set; } = ViewType.None;
         public static double ObliqueL { get; set; }
         public static double ObliqueAlpha { get; set; }
         public static double AxonometryPhi { get; set; }

@@ -2,7 +2,7 @@
 {
     public class Points
     {
-        public double[,] PointMatrix { get; set; }  = new double[1, 4] {{0, 0, 0, 1}};
+        public double[,] PointMatrix { get; }  = { { 0, 0, 0, 1 } };
 
         public double X
         {
@@ -20,10 +20,7 @@
             set => PointMatrix[0, 2] = value;
         }
 
-        public Points(double x, double y, double z)
-        {
-            PointMatrix = new double[1, 4] { { x, y, z, 1 } };
-        }
+        public Points() { }
 
         public Points(int x, int y, int z)
         {
@@ -35,9 +32,9 @@
             PointMatrix = new double[1, 4] { { x, y, z, 1 } };
         }
 
-        public Points()
+        public Points(double x, double y, double z)
         {
-            //p = new double[1, 4] { { X, Y, Z, 1 } };
+            PointMatrix = new double[1, 4] { { x, y, z, 1 } };
         }
     }
 }

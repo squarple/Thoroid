@@ -94,34 +94,34 @@ namespace Thoroid
             switch (button.Text)
             {
                 case "Points":
-                    Data.DrawType = DrawTypeEnum.Points;
+                    Data.DrawType = DrawType.None;
                     break;
                 case "Lines":
-                    Data.DrawType = DrawTypeEnum.Lines;
+                    Data.DrawType = DrawType.Lines;
                     break;
                 case "Polygons":
-                    Data.DrawType = DrawTypeEnum.Polygons;
+                    Data.DrawType = DrawType.Polygons;
                     break;
                 case "Usual":
-                    Data.ViewType = ViewTypeEnum.Usual;
+                    Data.ViewType = ViewType.None;
                     break;
                 case "Oblique":
-                    Data.ViewType = ViewTypeEnum.Oblique;
+                    Data.ViewType = ViewType.Oblique;
                     break;
                 case "Axonometric":
-                    Data.ViewType = ViewTypeEnum.Axonometric;
+                    Data.ViewType = ViewType.Axonometric;
                     break;
                 case "Perspective":
-                    Data.ViewType = ViewTypeEnum.Perspective;
+                    Data.ViewType = ViewType.Perspective;
                     break;
                 case "Orthogonal":
-                    Data.ViewType = ViewTypeEnum.Orthogonal;
+                    Data.ViewType = ViewType.Orthogonal;
                     break;
                 case "Profile":
-                    Data.ViewType = ViewTypeEnum.Profile;
+                    Data.ViewType = ViewType.Profile;
                     break;
                 case "Horizontal":
-                    Data.ViewType = ViewTypeEnum.Horizontal;
+                    Data.ViewType = ViewType.Horizontal;
                     break;
             }
         }

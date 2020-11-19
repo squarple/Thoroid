@@ -1,11 +1,11 @@
 ﻿namespace Thoroid
 {
-    public class _4Points
+    public class Polygon
     {
-        public System.Drawing.Point[] Points { get; set; }
-        public int[] ZArray { get; set; }
+        public System.Drawing.Point[] Points { get; }
+        public int[] ZArray { get; }
 
-        public _4Points(Points point1, Points point2, Points point3, Points point4)
+        public Polygon(Points point1, Points point2, Points point3, Points point4)
         {
             Points = new System.Drawing.Point[4];
             Points[0] = new System.Drawing.Point((int)point1.X, (int)point1.Y);

@@ -3,9 +3,9 @@
 namespace Thoroid.Enums
 {
     [Flags]
-    public enum DrawTypeEnum
+    public enum DrawType
     {
-        Points = 0,
+        None = 0,
         Lines = 1,
         Polygons = 2
     }

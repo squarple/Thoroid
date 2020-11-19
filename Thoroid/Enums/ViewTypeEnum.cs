@@ -3,10 +3,10 @@
 namespace Thoroid.Enums
 {
     [Flags]
-    public enum ViewTypeEnum
+    public enum ViewType
     {
 
-        Usual = 0,
+        None = 0,
         Oblique = 1,
         Axonometric = 2,
         Perspective = 4,

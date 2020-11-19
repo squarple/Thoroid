@@ -92,7 +92,6 @@ namespace Thoroid
             this.label18 = new System.Windows.Forms.Label();
             this.textBoxPerspectiveRo = new System.Windows.Forms.TextBox();
             this.textBoxPerspectiveTheta = new System.Windows.Forms.TextBox();
-            this.buttonAuto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -689,22 +688,11 @@ namespace Thoroid
             this.textBoxPerspectiveTheta.TabIndex = 50;
             this.textBoxPerspectiveTheta.Text = "-90";
             // 
-            // buttonAuto
-            // 
-            this.buttonAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAuto.Location = new System.Drawing.Point(893, 649);
-            this.buttonAuto.Name = "buttonAuto";
-            this.buttonAuto.Size = new System.Drawing.Size(129, 50);
-            this.buttonAuto.TabIndex = 54;
-            this.buttonAuto.Text = "AUTO";
-            this.buttonAuto.UseVisualStyleBackColor = true;
-            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 711);
-            this.Controls.Add(this.buttonAuto);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.textBoxPerspectiveRo);
@@ -838,7 +826,6 @@ namespace Thoroid
         private System.Windows.Forms.Button buttonMoveRight;
         private System.Windows.Forms.Button buttonScale;
         private System.Windows.Forms.Button buttonRotate;
-        private System.Windows.Forms.Button buttonAuto;
     }
 }
 

@@ -11,15 +11,11 @@ namespace Thoroid.Rendering
         private readonly Pen pen = new Pen(Color.Blue, 1);
 
         private static Graphics graph;
-        private List<_4Points> coordList;
+        private List<Polygon> coordList;
 
         public Rendering(ref PictureBox pictureBox)
         {
-            //pictureBox.Image = new Bitmap(pictureBox.Width, pictureBox.Height);
-
-            //_graph = Graphics.FromImage(pictureBox.Image);
             graph = pictureBox.CreateGraphics();
-            //_graph = Graphics.FromImage(_bmp);
 
             graph.SmoothingMode = SmoothingMode.AntiAlias;
             graph.TranslateTransform((float)pictureBox.Width / 2, (float)pictureBox.Height / 2);
@@ -43,7 +39,7 @@ namespace Thoroid.Rendering
         {
             graph.Clear(Color.Transparent);
 
-            coordList = new List<_4Points>();
+            coordList = new List<Polygon>();
             coordList = CreatePolygons(realPoints);
 
             foreach (var temp in coordList)
@@ -56,7 +52,7 @@ namespace Thoroid.Rendering
         {
             graph.Clear(Color.Transparent);
 
-            coordList = new List<_4Points>();   //лист полигонов из 4 точек
+            coordList = new List<Polygon>();   //лист полигонов из 4 точек
             coordList = CreatePolygons(points);
 
             graph.Clear(Color.Transparent);
@@ -102,7 +98,7 @@ namespace Thoroid.Rendering
             }
             //_pic.Image = _bmp;
         }
-        private static double CosNormal(_4Points p)
+        private static double CosNormal(Polygon p)
         {
             var coord = new double[3];
             coord[0] = (p.Points[1].Y - p.Points[0].Y) * (p.ZArray[2] - p.ZArray[0]) - (p.ZArray[1] - p.ZArray[0]) * (p.Points[2].Y - p.Points[0].Y);  //координаты нормали по x
@@ -112,11 +108,11 @@ namespace Thoroid.Rendering
             return cos;
         }
         //эти 2 ф-ции -- сортировка
-        private void QSort(double[,] facets, int @in, int @out)
+        private static void QSort(double[,] facets, int @in, int @out)
         {
             if (@in >= @out)
                 return;
-            int temp = Partition(facets, @in, @out);
+            var temp = Partition(facets, @in, @out);
             QSort(facets, @in, temp - 1);
             QSort(facets, temp + 1, @out);
         }
@@ -139,14 +135,14 @@ namespace Thoroid.Rendering
             return marker - 1;
         }
 
-        private static List<_4Points> CreatePolygons(Points[,] p)
+        private static List<Polygon> CreatePolygons(Points[,] p)
         {
-            List<_4Points> list = new List<_4Points>();
+            List<Polygon> list = new List<Polygon>();
             for (var i = 0; i < p.GetLength(0) - 1; i++)
             {
                 for (var j = 0; j < p.GetLength(1) - 1; j++)
                 {
-                    list.Add(new _4Points(p[i, j], p[i, j + 1], p[i + 1, j + 1], p[i + 1, j]));
+                    list.Add(new Polygon(p[i, j], p[i, j + 1], p[i + 1, j + 1], p[i + 1, j]));
                 }
             }
             return list;

@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using Thoroid.Enums;
+using System.Windows.Forms;
 using static System.Math;
 
 namespace Thoroid
@@ -16,9 +16,6 @@ namespace Thoroid
 
         private Points[,] realPoints;
         private Points[,] transformPoints;
-
-        private static DrawTypeEnum _drawType = DrawTypeEnum.Lines;
-        private static ViewTypeEnum _viewType = ViewTypeEnum.Usual;
 
         public Toroid(int approximationBig, int approximationSmall, int radiusBig, int radiusSmall, ref PictureBox picture)
         {
@@ -78,6 +75,39 @@ namespace Thoroid
             }
 
             DrawFigure();
+        }
+
+        private void DrawFigure()
+        {
+            switch (Data.ViewType)
+            {
+                case ViewType.None:
+                    UsualRendering();
+                    break;
+                case ViewType.Oblique:
+                    ObliqueRendering();
+                    break;
+                case ViewType.Axonometric:
+                    AxonometricRendering();
+                    break;
+                case ViewType.Perspective:
+                    PerspectiveRendering();
+                    break;
+                case ViewType.Orthogonal:
+                    OrthogonalRendering();
+                    break;
+                case ViewType.Profile:
+                    ProfileRendering();
+                    break;
+                case ViewType.Horizontal:
+                    HorizontalRendering();
+                    break;
+            }
+        }
+
+        private void UsualRendering()
+        {
+            DrawType(ref realPoints);
         }
 
         private void OrthogonalRendering()
@@ -165,50 +195,17 @@ namespace Thoroid
             DrawType(ref transformPoints);
         }
 
-        private void DrawFigure()
-        {
-            switch (/*_viewType*/Data.ViewType)
-            {
-                case ViewTypeEnum.Usual:
-                    UsualRendering();
-                    break;
-                case ViewTypeEnum.Oblique:
-                    ObliqueRendering();
-                    break;
-                case ViewTypeEnum.Axonometric:
-                    AxonometricRendering();
-                    break;
-                case ViewTypeEnum.Perspective:
-                    PerspectiveRendering();
-                    break;
-                case ViewTypeEnum.Orthogonal:
-                    OrthogonalRendering();
-                    break;
-                case ViewTypeEnum.Profile:
-                    ProfileRendering();
-                    break;
-                case ViewTypeEnum.Horizontal:
-                    HorizontalRendering();
-                    break;
-            }
-        }
-
-        private void UsualRendering()
-        {
-            DrawType(ref realPoints);
-        }
-
         private void DrawType(ref Points[,] points)
         {
-            switch (/*_drawType*/Data.DrawType)
+            switch (Data.DrawType)
             {
-                case DrawTypeEnum.Points:
+                case Enums.DrawType.None:
                     render.PointsRendering(ref points);
                     break;
-                case DrawTypeEnum.Lines:
+                case Enums.DrawType.Lines:
                     render.LinesRendering(ref points);
                     break;
-                case DrawTypeEnum.Polygons:
+                case Enums.DrawType.Polygons:
                     render.PolygonsRendering(ref points);
                     break;
             }
@@ -230,16 +227,6 @@ namespace Thoroid
                     };
                 }
             }
-        }
-
-        public static void ChangeDrawType(DrawTypeEnum type)
-        {
-            _drawType = type;
-        }
-
-        public static void ChangeViewType(ViewTypeEnum type)
-        {
-            _viewType = type;
         }
     }
 }
