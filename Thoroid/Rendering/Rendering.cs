@@ -87,16 +87,13 @@ namespace Thoroid.Rendering
                 p[3].X = coordList[(int)arr[i, 1]].Points[3].X;
                 p[3].Y = coordList[(int)arr[i, 1]].Points[3].Y;
 
-                int alpha = Math.Abs((int)(255 * (normAngle[(int)arr[i, 1]])));
-                Color clr = Color.FromArgb(alpha, 55, 100, 120);
+                //int alpha = Math.Abs((int)(255 * (normAngle[(int)arr[i, 1]])));
+                //Color clr = Color.FromArgb(alpha, 55, 100, 120);
+                Color clr = Color.FromArgb( 55, 100, 120);
                 SolidBrush dr = new SolidBrush(clr);
                 graph.FillPolygon(Brushes.Black, p);
                 graph.FillPolygon(dr, p);
-                //_graph.FillPolygon(Brushes.Aquamarine, p);
-                //_graph.DrawPolygon(new Pen(Color.Chartreuse), p);
-
             }
-            //_pic.Image = _bmp;
         }
         private static double CosNormal(Polygon p)
         {
