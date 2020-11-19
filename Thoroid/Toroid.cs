@@ -45,7 +45,7 @@ namespace Thoroid
             {
                 for (var j = 0; j < realPoints.GetLength(1); j++)
                 {
-                    realPoints[i, j] = Transformations.Move(realPoints[i, j], dX, dY, dZ);
+                    realPoints[i, j] = realPoints[i, j].Move(dX, dY, dZ);
                 }
             }
             DrawFigure();
@@ -57,7 +57,7 @@ namespace Thoroid
             {
                 for (var j = 0; j < realPoints.GetLength(1); j++)
                 {
-                    realPoints[i, j] = Transformations.Scale(realPoints[i, j], sX, sY, sZ);
+                    realPoints[i, j] = realPoints[i, j].Scale(sX, sY, sZ);
                 }
             }
 
@@ -66,12 +66,12 @@ namespace Thoroid
 
         public void Rotate(double thetaX, double thetaY, double thetaZ)
         {
-            Transformations.CreateRotateMatrix(thetaX, thetaY, thetaZ);
+            ExtensionMethods.CreateRotateMatrix(thetaX, thetaY, thetaZ);
             for (var i = 0; i < realPoints.GetLength(0); i++)
             {
                 for (var j = 0; j < realPoints.GetLength(1); j++)
                 {
-                    realPoints[i, j] = Transformations.Rotate(realPoints[i, j]);
+                    realPoints[i, j] = realPoints[i, j].Rotate();
                 }
             }
 
