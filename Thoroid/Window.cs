@@ -62,84 +62,68 @@ namespace Thoroid
                 Convert.ToDouble(textBoxRotateZ.Text));
         }
 
-        private void ButtonMoveUp_Click(object sender, EventArgs e)
+        private void ButtonCustomMove_Click(object sender, EventArgs e)
         {
-            tor.Move(0, 30, 0);
+            var button = (Button)sender;
+            switch (button.Text)
+            {
+                case "left":
+                    tor.Move(-30, 0, 0);
+                    break;
+                case "right":
+                    tor.Move(30, 0, 0);
+                    break;
+                case "up":
+                    tor.Move(0, 30, 0);
+                    break;
+                case "down":
+                    tor.Move(0, -30, 0);
+                    break;
+                case "from us":
+                    tor.Move(0, 0, -30);
+                    break;
+                case "to us":
+                    tor.Move(0, 0, 30);
+                    break;
+            }
         }
 
-        private void ButtonMoveDown_Click(object sender, EventArgs e)
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            tor.Move(0, -30, 0);
-        }
-
-        private void ButtonMoveLeft_Click(object sender, EventArgs e)
-        {
-            tor.Move(-30, 0, 0);
-        }
-
-        private void ButtonMoveRight_Click(object sender, EventArgs e)
-        {
-            tor.Move(30, 0, 0);
-        }
-
-        private void ButtonMoveFromUs_Click(object sender, EventArgs e)
-        {
-            tor.Move(0, 0, -30);
-        }
-
-        private void ButtonMoveToUs_Click(object sender, EventArgs e)
-        {
-            tor.Move(0, 0, 30);
-        }
-
-        private void RadioButtonPoints_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeDrawType(DrawTypeEnum.Points);
-        }
-
-        private void RadioButtonLines_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeDrawType(DrawTypeEnum.Lines);
-        }
-
-        private void RadioButtonPolygons_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeDrawType(DrawTypeEnum.Polygons);
-        }
-
-        private void RadioButtonUsual2D_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeViewType(ViewTypeEnum.Usual);
-        }
-
-        private void RadioButtonOblique_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeViewType(ViewTypeEnum.Oblique);
-        }
-
-        private void RadioButtonAxonometric_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeViewType(ViewTypeEnum.Axonometric);
-        }
-
-        private void RadioButtonPerspective_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeViewType(ViewTypeEnum.Perspective);
-        }
-
-        private void RadioButtonOrthogonal_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeViewType(ViewTypeEnum.Orthogonal);
-        }
-
-        private void RadioButtonProfile_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeViewType(ViewTypeEnum.Profile);
-        }
-
-        private void RadioButtonHorizontal_CheckedChanged(object sender, EventArgs e)
-        {
-            Toroid.ChangeViewType(ViewTypeEnum.Horizontal);
+            var button = (RadioButton) sender;
+            switch (button.Text)
+            {
+                case "Points":
+                    Data.DrawType = DrawTypeEnum.Points;
+                    break;
+                case "Lines":
+                    Data.DrawType = DrawTypeEnum.Lines;
+                    break;
+                case "Polygons":
+                    Data.DrawType = DrawTypeEnum.Polygons;
+                    break;
+                case "Usual":
+                    Data.ViewType = ViewTypeEnum.Usual;
+                    break;
+                case "Oblique":
+                    Data.ViewType = ViewTypeEnum.Oblique;
+                    break;
+                case "Axonometric":
+                    Data.ViewType = ViewTypeEnum.Axonometric;
+                    break;
+                case "Perspective":
+                    Data.ViewType = ViewTypeEnum.Perspective;
+                    break;
+                case "Orthogonal":
+                    Data.ViewType = ViewTypeEnum.Orthogonal;
+                    break;
+                case "Profile":
+                    Data.ViewType = ViewTypeEnum.Profile;
+                    break;
+                case "Horizontal":
+                    Data.ViewType = ViewTypeEnum.Horizontal;
+                    break;
+            }
         }
     }
 }

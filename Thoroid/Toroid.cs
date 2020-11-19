@@ -167,7 +167,7 @@ namespace Thoroid
 
         private void DrawFigure()
         {
-            switch (_viewType)
+            switch (/*_viewType*/Data.ViewType)
             {
                 case ViewTypeEnum.Usual:
                     UsualRendering();
@@ -200,7 +200,7 @@ namespace Thoroid
 
         private void DrawType(ref Points[,] points)
         {
-            switch (_drawType)
+            switch (/*_drawType*/Data.DrawType)
             {
                 case DrawTypeEnum.Points:
                     render.PointsRendering(ref points);

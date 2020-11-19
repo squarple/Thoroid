@@ -122,11 +122,11 @@ namespace Thoroid
             this.radioButtonPolygons.AutoSize = true;
             this.radioButtonPolygons.Location = new System.Drawing.Point(7, 65);
             this.radioButtonPolygons.Name = "radioButtonPolygons";
-            this.radioButtonPolygons.Size = new System.Drawing.Size(67, 17);
+            this.radioButtonPolygons.Size = new System.Drawing.Size(68, 17);
             this.radioButtonPolygons.TabIndex = 2;
-            this.radioButtonPolygons.Text = "polygons";
+            this.radioButtonPolygons.Text = "Polygons";
             this.radioButtonPolygons.UseVisualStyleBackColor = true;
-            this.radioButtonPolygons.CheckedChanged += new System.EventHandler(this.RadioButtonPolygons_CheckedChanged);
+            this.radioButtonPolygons.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButtonLines
             // 
@@ -134,23 +134,23 @@ namespace Thoroid
             this.radioButtonLines.Checked = true;
             this.radioButtonLines.Location = new System.Drawing.Point(7, 42);
             this.radioButtonLines.Name = "radioButtonLines";
-            this.radioButtonLines.Size = new System.Drawing.Size(46, 17);
+            this.radioButtonLines.Size = new System.Drawing.Size(50, 17);
             this.radioButtonLines.TabIndex = 1;
             this.radioButtonLines.TabStop = true;
-            this.radioButtonLines.Text = "lines";
+            this.radioButtonLines.Text = "Lines";
             this.radioButtonLines.UseVisualStyleBackColor = true;
-            this.radioButtonLines.CheckedChanged += new System.EventHandler(this.RadioButtonLines_CheckedChanged);
+            this.radioButtonLines.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButtonPoints
             // 
             this.radioButtonPoints.AutoSize = true;
             this.radioButtonPoints.Location = new System.Drawing.Point(7, 20);
             this.radioButtonPoints.Name = "radioButtonPoints";
-            this.radioButtonPoints.Size = new System.Drawing.Size(71, 17);
+            this.radioButtonPoints.Size = new System.Drawing.Size(54, 17);
             this.radioButtonPoints.TabIndex = 0;
-            this.radioButtonPoints.Text = "realPoints";
+            this.radioButtonPoints.Text = "Points";
             this.radioButtonPoints.UseVisualStyleBackColor = true;
-            this.radioButtonPoints.CheckedChanged += new System.EventHandler(this.RadioButtonPoints_CheckedChanged);
+            this.radioButtonPoints.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -176,7 +176,7 @@ namespace Thoroid
             this.radioButtonHorizontal.TabIndex = 6;
             this.radioButtonHorizontal.Text = "Horizontal";
             this.radioButtonHorizontal.UseVisualStyleBackColor = true;
-            this.radioButtonHorizontal.CheckedChanged += new System.EventHandler(this.RadioButtonHorizontal_CheckedChanged);
+            this.radioButtonHorizontal.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButtonProfile
             // 
@@ -187,7 +187,7 @@ namespace Thoroid
             this.radioButtonProfile.TabIndex = 5;
             this.radioButtonProfile.Text = "Profile";
             this.radioButtonProfile.UseVisualStyleBackColor = true;
-            this.radioButtonProfile.CheckedChanged += new System.EventHandler(this.RadioButtonProfile_CheckedChanged);
+            this.radioButtonProfile.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButtonOrthogonal
             // 
@@ -198,7 +198,7 @@ namespace Thoroid
             this.radioButtonOrthogonal.TabIndex = 4;
             this.radioButtonOrthogonal.Text = "Orthogonal";
             this.radioButtonOrthogonal.UseVisualStyleBackColor = true;
-            this.radioButtonOrthogonal.CheckedChanged += new System.EventHandler(this.RadioButtonOrthogonal_CheckedChanged);
+            this.radioButtonOrthogonal.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButtonPerspective
             // 
@@ -209,7 +209,7 @@ namespace Thoroid
             this.radioButtonPerspective.TabIndex = 3;
             this.radioButtonPerspective.Text = "Perspective";
             this.radioButtonPerspective.UseVisualStyleBackColor = true;
-            this.radioButtonPerspective.CheckedChanged += new System.EventHandler(this.RadioButtonPerspective_CheckedChanged);
+            this.radioButtonPerspective.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButtonAxonometric
             // 
@@ -220,7 +220,7 @@ namespace Thoroid
             this.radioButtonAxonometric.TabIndex = 2;
             this.radioButtonAxonometric.Text = "Axonometric";
             this.radioButtonAxonometric.UseVisualStyleBackColor = true;
-            this.radioButtonAxonometric.CheckedChanged += new System.EventHandler(this.RadioButtonAxonometric_CheckedChanged);
+            this.radioButtonAxonometric.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButtonOblique
             // 
@@ -231,7 +231,7 @@ namespace Thoroid
             this.radioButtonOblique.TabIndex = 1;
             this.radioButtonOblique.Text = "Oblique";
             this.radioButtonOblique.UseVisualStyleBackColor = true;
-            this.radioButtonOblique.CheckedChanged += new System.EventHandler(this.RadioButtonOblique_CheckedChanged);
+            this.radioButtonOblique.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // radioButtonUsual2D
             // 
@@ -239,12 +239,12 @@ namespace Thoroid
             this.radioButtonUsual2D.Checked = true;
             this.radioButtonUsual2D.Location = new System.Drawing.Point(7, 20);
             this.radioButtonUsual2D.Name = "radioButtonUsual2D";
-            this.radioButtonUsual2D.Size = new System.Drawing.Size(70, 17);
+            this.radioButtonUsual2D.Size = new System.Drawing.Size(52, 17);
             this.radioButtonUsual2D.TabIndex = 0;
             this.radioButtonUsual2D.TabStop = true;
-            this.radioButtonUsual2D.Text = "usual_2D";
+            this.radioButtonUsual2D.Text = "Usual";
             this.radioButtonUsual2D.UseVisualStyleBackColor = true;
-            this.radioButtonUsual2D.CheckedChanged += new System.EventHandler(this.RadioButtonUsual2D_CheckedChanged);
+            this.radioButtonUsual2D.CheckedChanged += new System.EventHandler(this.RadioButton_CheckedChanged);
             // 
             // label1
             // 
@@ -342,7 +342,7 @@ namespace Thoroid
             this.buttonMoveUp.TabIndex = 14;
             this.buttonMoveUp.Text = "up";
             this.buttonMoveUp.UseVisualStyleBackColor = true;
-            this.buttonMoveUp.Click += new System.EventHandler(this.ButtonMoveUp_Click);
+            this.buttonMoveUp.Click += new System.EventHandler(this.ButtonCustomMove_Click);
             // 
             // buttonMoveFromUs
             // 
@@ -352,7 +352,7 @@ namespace Thoroid
             this.buttonMoveFromUs.TabIndex = 15;
             this.buttonMoveFromUs.Text = "from us";
             this.buttonMoveFromUs.UseVisualStyleBackColor = true;
-            this.buttonMoveFromUs.Click += new System.EventHandler(this.ButtonMoveFromUs_Click);
+            this.buttonMoveFromUs.Click += new System.EventHandler(this.ButtonCustomMove_Click);
             // 
             // buttonMoveRight
             // 
@@ -362,7 +362,7 @@ namespace Thoroid
             this.buttonMoveRight.TabIndex = 16;
             this.buttonMoveRight.Text = "right";
             this.buttonMoveRight.UseVisualStyleBackColor = true;
-            this.buttonMoveRight.Click += new System.EventHandler(this.ButtonMoveRight_Click);
+            this.buttonMoveRight.Click += new System.EventHandler(this.ButtonCustomMove_Click);
             // 
             // buttonMoveToUs
             // 
@@ -372,7 +372,7 @@ namespace Thoroid
             this.buttonMoveToUs.TabIndex = 18;
             this.buttonMoveToUs.Text = "to us";
             this.buttonMoveToUs.UseVisualStyleBackColor = true;
-            this.buttonMoveToUs.Click += new System.EventHandler(this.ButtonMoveToUs_Click);
+            this.buttonMoveToUs.Click += new System.EventHandler(this.ButtonCustomMove_Click);
             // 
             // buttonMoveLeft
             // 
@@ -382,7 +382,7 @@ namespace Thoroid
             this.buttonMoveLeft.TabIndex = 17;
             this.buttonMoveLeft.Text = "left";
             this.buttonMoveLeft.UseVisualStyleBackColor = true;
-            this.buttonMoveLeft.Click += new System.EventHandler(this.ButtonMoveLeft_Click);
+            this.buttonMoveLeft.Click += new System.EventHandler(this.ButtonCustomMove_Click);
             // 
             // buttonMoveDown
             // 
@@ -392,7 +392,7 @@ namespace Thoroid
             this.buttonMoveDown.TabIndex = 19;
             this.buttonMoveDown.Text = "down";
             this.buttonMoveDown.UseVisualStyleBackColor = true;
-            this.buttonMoveDown.Click += new System.EventHandler(this.ButtonMoveDown_Click);
+            this.buttonMoveDown.Click += new System.EventHandler(this.ButtonCustomMove_Click);
             // 
             // textBoxMoveX
             // 
