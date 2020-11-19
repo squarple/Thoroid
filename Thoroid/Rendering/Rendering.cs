@@ -54,7 +54,7 @@ namespace Thoroid.Rendering
 
             foreach (var temp in coordList)
             {
-                graph.DrawPolygon(pen, temp.points);
+                graph.DrawPolygon(pen, temp.Points);
             }
         }
 
@@ -75,7 +75,7 @@ namespace Thoroid.Rendering
             for (int i = 0; i < coordList.Count; i++)
             {
                 cur = 0;
-                cur = (coordList[i].z_array[0] + coordList[i].z_array[1] + coordList[i].z_array[2] + coordList[i].z_array[3]) / 4;
+                cur = (coordList[i].ZArray[0] + coordList[i].ZArray[1] + coordList[i].ZArray[2] + coordList[i].ZArray[3]) / 4;
                 arr[i, 0] = cur;
                 arr[i, 1] = i;
             }
@@ -89,17 +89,17 @@ namespace Thoroid.Rendering
             QSort(arr, 0, coordList.Count - 1);
             for (int i = 0; i < arr.GetLength(0); i++)
             {
-                p[0].X = (int)coordList[(int)arr[i, 1]].points[0].X;
-                p[0].Y = (int)coordList[(int)arr[i, 1]].points[0].Y;
+                p[0].X = (int)coordList[(int)arr[i, 1]].Points[0].X;
+                p[0].Y = (int)coordList[(int)arr[i, 1]].Points[0].Y;
 
-                p[1].X = (int)coordList[(int)arr[i, 1]].points[1].X;
-                p[1].Y = (int)coordList[(int)arr[i, 1]].points[1].Y;
+                p[1].X = (int)coordList[(int)arr[i, 1]].Points[1].X;
+                p[1].Y = (int)coordList[(int)arr[i, 1]].Points[1].Y;
 
-                p[2].X = (int)coordList[(int)arr[i, 1]].points[2].X;
-                p[2].Y = (int)coordList[(int)arr[i, 1]].points[2].Y;
+                p[2].X = (int)coordList[(int)arr[i, 1]].Points[2].X;
+                p[2].Y = (int)coordList[(int)arr[i, 1]].Points[2].Y;
 
-                p[3].X = (int)coordList[(int)arr[i, 1]].points[3].X;
-                p[3].Y = (int)coordList[(int)arr[i, 1]].points[3].Y;
+                p[3].X = (int)coordList[(int)arr[i, 1]].Points[3].X;
+                p[3].Y = (int)coordList[(int)arr[i, 1]].Points[3].Y;
 
                 int _alpha = Math.Abs((int)(255 * (NormAngle[(int)arr[i, 1]])));
                 Color clr = Color.FromArgb(_alpha, 55, 100, 120);
@@ -115,9 +115,9 @@ namespace Thoroid.Rendering
         private static double CosNormal(_4Points p)
         {
             double[] coord = new double[3];
-            coord[0] = (p.points[1].Y - p.points[0].Y) * (p.z_array[2] - p.z_array[0]) - (p.z_array[1] - p.z_array[0]) * (p.points[2].Y - p.points[0].Y);  //координаты нормали по x
-            coord[1] = (p.z_array[1] - p.z_array[0]) * (p.points[2].X - p.points[0].X) - (p.points[1].X - p.points[0].X) * (p.z_array[2] - p.z_array[0]);  //координаты нормали по y
-            coord[2] = (p.points[1].X - p.points[0].X) * (p.points[2].Y - p.points[0].Y) - (p.points[1].Y - p.points[0].Y) * (p.points[2].X - p.points[0].X);  //координаты нормали по z
+            coord[0] = (p.Points[1].Y - p.Points[0].Y) * (p.ZArray[2] - p.ZArray[0]) - (p.ZArray[1] - p.ZArray[0]) * (p.Points[2].Y - p.Points[0].Y);  //координаты нормали по x
+            coord[1] = (p.ZArray[1] - p.ZArray[0]) * (p.Points[2].X - p.Points[0].X) - (p.Points[1].X - p.Points[0].X) * (p.ZArray[2] - p.ZArray[0]);  //координаты нормали по y
+            coord[2] = (p.Points[1].X - p.Points[0].X) * (p.Points[2].Y - p.Points[0].Y) - (p.Points[1].Y - p.Points[0].Y) * (p.Points[2].X - p.Points[0].X);  //координаты нормали по z
             double cos = coord[2] / (Math.Sqrt(Math.Pow(coord[0], 2) + Math.Pow(coord[1], 2) + Math.Pow(coord[2], 2)));
             return cos;
         }
