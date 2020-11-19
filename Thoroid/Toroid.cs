@@ -41,11 +41,12 @@ namespace Thoroid
 
         public void Move(double dX, double dY, double dZ)
         {
+            ExtensionMethods.CreateMoveMatrix(dX, dY, dZ);
             for (var i = 0; i < realPoints.GetLength(0); i++)
             {
                 for (var j = 0; j < realPoints.GetLength(1); j++)
                 {
-                    realPoints[i, j] = realPoints[i, j].Move(dX, dY, dZ);
+                    realPoints[i, j] = realPoints[i, j].Move();
                 }
             }
             DrawFigure();
@@ -53,11 +54,12 @@ namespace Thoroid
 
         public void Scale(double sX, double sY, double sZ)
         {
+            ExtensionMethods.CreateScaleMatrix(sX, sY, sZ);
             for (var i = 0; i < realPoints.GetLength(0); i++)
             {
                 for (var j = 0; j < realPoints.GetLength(1); j++)
                 {
-                    realPoints[i, j] = realPoints[i, j].Scale(sX, sY, sZ);
+                    realPoints[i, j] = realPoints[i, j].Scale();
                 }
             }
 
@@ -119,13 +121,14 @@ namespace Thoroid
 
         private void ObliqueRendering()
         {
+            ExtensionMethods.CreateObliqueProjectionMatrix(Data.ObliqueL, Data.ObliqueAlpha);
             Array.Copy(realPoints, transformPoints, realPoints.Length);
 
             for (var i = 0; i < transformPoints.GetLength(0); i++)
             {
                 for (var j = 0; j < transformPoints.GetLength(1); j++)
                 {
-                    transformPoints[i, j] = transformPoints[i, j].ObliqueProjection(Data.ObliqueL, Data.ObliqueAlpha);
+                    transformPoints[i, j] = transformPoints[i, j].ObliqueProjection();
                 }
             }
             DrawType(ref transformPoints);
@@ -133,13 +136,14 @@ namespace Thoroid
 
         private void AxonometricRendering()
         {
+            ExtensionMethods.CreateAxonometryProjectionMatrix(Data.AxonometryPhi, Data.AxonometryTheta);
             Array.Copy(realPoints, transformPoints, realPoints.Length);
 
             for (var i = 0; i < transformPoints.GetLength(0); i++)
             {
                 for (var j = 0; j < transformPoints.GetLength(1); j++)
                 {
-                    transformPoints[i, j] = transformPoints[i, j].AxonometryProjection(Data.AxonometryPhi, Data.AxonometryTheta);
+                    transformPoints[i, j] = transformPoints[i, j].AxonometryProjection();
                 }
             }
             DrawType(ref transformPoints);
@@ -147,15 +151,14 @@ namespace Thoroid
 
         private void PerspectiveRendering()
         {
+            ExtensionMethods.CreateViewMatrix(Data.PerspectiveTheta, Data.PerspectivePhi, Data.PerspectiveRo);
             Array.Copy(realPoints, transformPoints, realPoints.Length);
 
             for (var i = 0; i < transformPoints.GetLength(0); i++)
             {
                 for (var j = 0; j < transformPoints.GetLength(1); j++)
                 {
-                    transformPoints[i, j] = transformPoints[i, j].ViewMatrix(Data.PerspectiveTheta, 
-                                                                             Data.PerspectivePhi, 
-                                                                             Data.PerspectiveRo);
+                    transformPoints[i, j] = transformPoints[i, j].ViewMatrix();
                     transformPoints[i, j] = transformPoints[i, j].PerspectiveProjection(Data.PerspectiveD);
                 }
             }
