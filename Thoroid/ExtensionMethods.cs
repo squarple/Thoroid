@@ -88,7 +88,7 @@ namespace Thoroid
 
         public static Points HorizontalProjection(this Points point)
         {
-            return new Points(point.X, point.Z, 0);
+            return new Points(point.X, point.Z, point.Y);
         }
 
         public static void CreateObliqueProjectionMatrix(double l, double alpha)
