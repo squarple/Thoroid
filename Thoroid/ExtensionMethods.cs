@@ -83,7 +83,7 @@ namespace Thoroid
 
         public static Points ProfileProjection(this Points point)
         {
-            return new Points(point.Z, point.Y, 0);
+            return new Points(point.Z, point.Y, point.X);
         }
 
         public static Points HorizontalProjection(this Points point)
