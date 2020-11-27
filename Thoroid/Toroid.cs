@@ -112,8 +112,7 @@ namespace Thoroid
 
         private void OrthogonalRendering()
         {
-            Array.Copy(realPoints, transformPoints, realPoints.Length);
-            DrawType(ref transformPoints);
+            DrawType(ref realPoints);
         }
 
         private void ProfileRendering()
