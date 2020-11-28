@@ -107,12 +107,12 @@ namespace Thoroid
 
         private void UsualRendering()
         {
-            DrawType(ref realPoints);
+            DrawType(ref realPoints, new Points(0,0,1000), false);
         }
 
         private void OrthogonalRendering()
         {
-            DrawType(ref realPoints);
+            DrawType(ref realPoints, new Points(0,0,1000), false);
         }
 
         private void ProfileRendering()
@@ -125,7 +125,7 @@ namespace Thoroid
                     transformPoints[i, j] = transformPoints[i, j].ProfileProjection();
                 }
             }
-            DrawType(ref transformPoints);
+            DrawType(ref transformPoints, new Points(0,0,1000), false);
         }
 
         private void HorizontalRendering()
@@ -138,7 +138,7 @@ namespace Thoroid
                     transformPoints[i, j] = transformPoints[i, j].HorizontalProjection();
                 }
             }
-            DrawType(ref transformPoints);
+            DrawType(ref transformPoints, new Points(0,0,1000), false);
         }
 
         private void ObliqueRendering()
@@ -153,7 +153,7 @@ namespace Thoroid
                     transformPoints[i, j] = transformPoints[i, j].ObliqueProjection();
                 }
             }
-            DrawType(ref transformPoints);
+            DrawType(ref transformPoints, new Points(0,0,1000), false);
         }
 
         private void AxonometricRendering()
@@ -168,7 +168,7 @@ namespace Thoroid
                     transformPoints[i, j] = transformPoints[i, j].AxonometryProjection();
                 }
             }
-            DrawType(ref transformPoints);
+            DrawType(ref transformPoints, new Points(0,0,1000), false);
         }
 
         private void PerspectiveRendering()
@@ -181,13 +181,20 @@ namespace Thoroid
                 for (var j = 0; j < transformPoints.GetLength(1); j++)
                 {
                     transformPoints[i, j] = transformPoints[i, j].ViewMatrix();
-                    transformPoints[i, j] = transformPoints[i, j].PerspectiveProjection(Data.PerspectiveD);
+                    //transformPoints[i, j] = transformPoints[i, j].PerspectiveProjection(Data.PerspectiveD);
                 }
             }
-            DrawType(ref transformPoints);
+
+            Points lp = new Points()
+            {
+                X = Data.PerspectiveRo * Sin(Data.PerspectivePhi.DegToRad()) * Cos(Data.PerspectiveTheta.DegToRad()),
+                Y = Data.PerspectiveRo * Sin(Data.PerspectivePhi.DegToRad()) * Sin(Data.PerspectiveTheta.DegToRad()),
+                Z = Data.PerspectiveRo * Cos(Data.PerspectivePhi.DegToRad()),
+            };
+            DrawType(ref transformPoints, lp, true);
         }
 
-        private void DrawType(ref Points[,] points)
+        private void DrawType(ref Points[,] points, Points viewPoint, bool isPerspective)
         {
             switch (Data.DrawType)
             {
@@ -199,7 +206,7 @@ namespace Thoroid
                     break;
                 case Enums.DrawType.Polygons:
                     //render.PolygonsRendering(ref points);
-                    render.PPolygonsRendering(ref points);
+                    render.PPolygonsRendering(ref points, viewPoint, isPerspective);
                     break;
             }
         }

@@ -97,7 +97,7 @@ namespace Thoroid
             {
                 {1                        , 0                        , 0, 0},
                 {0                        , 1                        , 0, 0},
-                {l * Cos(alpha.DegToRad()), l * Sin(alpha.DegToRad()), 0, 0},
+                {l * Cos(alpha.DegToRad()), l * Sin(alpha.DegToRad()), 1, 0},
                 {0                        , 0                        , 0, 1}
             };
         }
@@ -113,7 +113,7 @@ namespace Thoroid
             {
                 { Cos(theta.DegToRad()),  Sin(phi.DegToRad()) * Sin(theta.DegToRad()), 0, 0 },
                 { 0                    ,  Cos(phi.DegToRad())                        , 0, 0 },
-                { Sin(theta.DegToRad()), -Sin(phi.DegToRad()) * Cos(theta.DegToRad()), 0, 0 },
+                { Sin(theta.DegToRad()), -Sin(phi.DegToRad()) * Cos(theta.DegToRad()), 1, 0 },
                 { 0                    ,  0                                          , 0, 0 }
             };
         }

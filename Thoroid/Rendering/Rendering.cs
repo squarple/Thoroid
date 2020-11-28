@@ -48,7 +48,7 @@ namespace Thoroid.Rendering
             }
         }
 
-        public void PPolygonsRendering(ref Points[,] points)
+        public void PPolygonsRendering(ref Points[,] points, Points viewPoint, bool isPerspective)
         {
             graph.Clear(Color.Transparent);
 
@@ -58,46 +58,69 @@ namespace Thoroid.Rendering
             graph.Clear(Color.Transparent);
 
             //#TODO сортировка
-            for (int i = 0; i < coordList.Count-1; i++)
+            for (int i = 0; i < coordList.Count - 1; i++)
             {
-                for (int j = i+1; j < coordList.Count; j++)
+                for (int j = i + 1; j < coordList.Count; j++)
                 {
-                    
+                    if (coordList[i].midpoint.Z > coordList[j].midpoint.Z)
+                    {
+                        var temp = coordList[i];
+                        coordList[i] = coordList[j];
+                        coordList[j] = temp;
+                    }
+                }
+            }
+
+            if (isPerspective)
+            {
+                for (var i = 0; i < points.GetLength(0); i++)
+                {
+                    for (var j = 0; j < points.GetLength(1); j++)
+                    {
+                        points[i, j] = points[i, j].PerspectiveProjection(Data.PerspectiveD);
+                    }
                 }
             }
 
             foreach (var p in coordList)
             {
-                Points a = new Points()
-                {
-                    X = p.Points[0].Y * p.ZArray[1] + p.Points[1].Y * p.ZArray[2] + p.Points[2].Y * p.ZArray[0] -
-                        p.Points[1].Y * p.ZArray[0] - p.Points[2].Y * p.ZArray[1] - p.Points[0].Y * p.ZArray[2],
-                    Y = p.ZArray[0] * p.Points[1].X + p.ZArray[1] * p.Points[2].X + p.ZArray[2] * p.Points[0].X -
-                        p.ZArray[1] * p.Points[0].X - p.ZArray[2] * p.Points[1].X - p.ZArray[0] * p.Points[2].X,
-                    Z = p.Points[0].X * p.Points[1].Y + p.Points[1].X * p.Points[2].Y + p.Points[2].X * p.Points[0].Y -
-                        p.Points[1].X * p.Points[0].Y - p.Points[2].X * p.Points[1].Y - p.Points[0].X * p.Points[2].Y,
-                };
-                Points lp = new Points()
-                {
-                    X = 0, Y = 0, Z = 1000,
-                };
-                Points b = new Points()
-                {
-                    X = lp.X - (p.Points[0].X + p.Points[1].X + p.Points[2].X + p.Points[3].X) / 4,
-                    Y = lp.X - (p.Points[0].Y + p.Points[1].Y + p.Points[2].Y + p.Points[3].Y) / 4,
-                    Z = lp.X - (p.ZArray[0] + p.ZArray[1] + p.ZArray[2] + p.ZArray[3]) / 4,
-                };
-                var scalarMult = a.X * b.X + a.Y * b.Y + a.Z * b.Z;
-                var moduleMult = Math.Sqrt(Math.Pow(a.X, 2) + Math.Pow(a.Y, 2) + Math.Pow(a.Z, 2)) *
-                                 Math.Sqrt(Math.Pow(b.X, 2) + Math.Pow(b.Y, 2) + Math.Pow(b.Z, 2));
-                var cos = scalarMult / moduleMult;
-
-                if (Math.Acos(cos) < 90)
-                {
-                    graph.DrawPolygon(pen, p.Points);
-                    graph.FillPolygon(Brushes.Aquamarine, p.Points);
-                }
+                graph.DrawPolygon(pen, p.Points);
+                graph.FillPolygon(Brushes.Aquamarine, p.Points);
             }
+
+            //foreach (var p in coordList)
+            //{
+            //    Points a = new Points()
+            //    {
+            //        X = p.Points[0].Y * p.ZArray[1] + p.Points[1].Y * p.ZArray[2] + p.Points[2].Y * p.ZArray[0] -
+            //            p.Points[1].Y * p.ZArray[0] - p.Points[2].Y * p.ZArray[1] - p.Points[0].Y * p.ZArray[2],
+            //        Y = p.ZArray[0] * p.Points[1].X + p.ZArray[1] * p.Points[2].X + p.ZArray[2] * p.Points[0].X -
+            //            p.ZArray[1] * p.Points[0].X - p.ZArray[2] * p.Points[1].X - p.ZArray[0] * p.Points[2].X,
+            //        Z = p.Points[0].X * p.Points[1].Y + p.Points[1].X * p.Points[2].Y + p.Points[2].X * p.Points[0].Y -
+            //            p.Points[1].X * p.Points[0].Y - p.Points[2].X * p.Points[1].Y - p.Points[0].X * p.Points[2].Y,
+            //    };
+            //    //Points lp = new Points()
+            //    //{
+            //    //    X = 0, Y = 0, Z = 1000,
+            //    //};
+            //    var lp = viewPoint;
+            //    Points b = new Points()
+            //    {
+            //        X = lp.X - (p.Points[0].X + p.Points[1].X + p.Points[2].X + p.Points[3].X) / 4,
+            //        Y = lp.X - (p.Points[0].Y + p.Points[1].Y + p.Points[2].Y + p.Points[3].Y) / 4,
+            //        Z = lp.X - (p.ZArray[0] + p.ZArray[1] + p.ZArray[2] + p.ZArray[3]) / 4,
+            //    };
+            //    var scalarMult = a.X * b.X + a.Y * b.Y + a.Z * b.Z;
+            //    var moduleMult = Math.Sqrt(Math.Pow(a.X, 2) + Math.Pow(a.Y, 2) + Math.Pow(a.Z, 2)) *
+            //                     Math.Sqrt(Math.Pow(b.X, 2) + Math.Pow(b.Y, 2) + Math.Pow(b.Z, 2));
+            //    var cos = scalarMult / moduleMult;
+            //
+            //    if (Math.Acos(cos) < 90)
+            //    {
+            //        graph.DrawPolygon(pen, p.Points);
+            //        graph.FillPolygon(Brushes.Aquamarine, p.Points);
+            //    }
+            //}
         }
 
         public void PolygonsRendering(ref Points[,] points)
