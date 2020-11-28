@@ -198,7 +198,8 @@ namespace Thoroid
                     render.LinesRendering(ref points);
                     break;
                 case Enums.DrawType.Polygons:
-                    render.PolygonsRendering(ref points);
+                    //render.PolygonsRendering(ref points);
+                    render.PPolygonsRendering(ref points);
                     break;
             }
         }
