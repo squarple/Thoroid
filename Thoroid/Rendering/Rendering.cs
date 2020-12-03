@@ -44,7 +44,7 @@ namespace Thoroid.Rendering
 
             foreach (var temp in coordList)
             {
-                graph.DrawPolygon(pen, temp.Points);
+                graph.DrawPolygon(pen, temp.ScreenPoints);
             }
         }
 
@@ -73,19 +73,26 @@ namespace Thoroid.Rendering
 
             if (isPerspective)
             {
-                for (var i = 0; i < points.GetLength(0); i++)
+                foreach (var polygon in coordList)
                 {
-                    for (var j = 0; j < points.GetLength(1); j++)
-                    {
-                        points[i, j] = points[i, j].PerspectiveProjection(Data.PerspectiveD);
-                    }
+                    polygon.Points[0] = polygon.Points[0].PerspectiveProjection(Data.PerspectiveD);
+                    polygon.Points[1] = polygon.Points[1].PerspectiveProjection(Data.PerspectiveD);
+                    polygon.Points[2] = polygon.Points[2].PerspectiveProjection(Data.PerspectiveD);
+                    polygon.Points[3] = polygon.Points[3].PerspectiveProjection(Data.PerspectiveD);
                 }
+                //for (var i = 0; i < points.GetLength(0); i++)
+                //{
+                //    for (var j = 0; j < points.GetLength(1); j++)
+                //    {
+                //        points[i, j] = points[i, j].PerspectiveProjection(Data.PerspectiveD);
+                //    }
+                //}
             }
 
             foreach (var p in coordList)
             {
-                graph.DrawPolygon(pen, p.Points);
-                graph.FillPolygon(Brushes.Aquamarine, p.Points);
+                graph.DrawPolygon(pen, p.ScreenPoints);
+                graph.FillPolygon(Brushes.Aquamarine, p.ScreenPoints);
             }
 
             //foreach (var p in coordList)
@@ -123,7 +130,7 @@ namespace Thoroid.Rendering
             //}
         }
 
-        public void PolygonsRendering(ref Points[,] points)
+        /*public void PolygonsRendering(ref Points[,] points)
         {
             graph.Clear(Color.Transparent);
 
@@ -205,7 +212,7 @@ namespace Thoroid.Rendering
                 }
             }
             return marker - 1;
-        }
+        }*/
 
         private static List<Polygon> CreatePolygons(Points[,] p)
         {
