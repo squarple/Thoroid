@@ -62,7 +62,7 @@ namespace Thoroid.Rendering
             {
                 for (int j = i + 1; j < coordList.Count; j++)
                 {
-                    if (coordList[i].midpoint.Z > coordList[j].midpoint.Z)
+                    if (coordList[i].midpoint.Z < coordList[j].midpoint.Z)
                     {
                         var temp = coordList[i];
                         coordList[i] = coordList[j];
