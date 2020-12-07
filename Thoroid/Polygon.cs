@@ -4,22 +4,17 @@ namespace Thoroid
 {
     public class Polygon
     {
-        private Points[] points;
-        public Points[] Points
-        {
-            get => points;
-            set => points = value;
-        }
+        public Points[] Points { get; set; }
         public Point[] ScreenPoints
         {
             get
             {
                 return new[]
                 {
-                    new Point((int)points[0].X, (int)points[0].Y), 
-                    new Point((int)points[1].X, (int)points[1].Y), 
-                    new Point((int)points[2].X, (int)points[2].Y), 
-                    new Point((int)points[3].X, (int)points[3].Y), 
+                    new Point((int)Points[0].X, (int)Points[0].Y), 
+                    new Point((int)Points[1].X, (int)Points[1].Y), 
+                    new Point((int)Points[2].X, (int)Points[2].Y), 
+                    new Point((int)Points[3].X, (int)Points[3].Y), 
                 };
             }
         }
@@ -29,11 +24,11 @@ namespace Thoroid
 
         public Polygon(Points point1, Points point2, Points point3, Points point4)
         {
-            points = new Points[4];
-            points[0] = point1;
-            points[1] = point2;
-            points[2] = point3;
-            points[3] = point4;
+            Points = new Points[4];
+            Points[0] = point1;
+            Points[1] = point2;
+            Points[2] = point3;
+            Points[3] = point4;
 
             ZArray = new int[4];
             ZArray[0] = (int)point1.Z;
@@ -48,5 +43,7 @@ namespace Thoroid
                 Z = (point1.Z +point2.Z + point3.Z + point4.Z) / 4, 
             };
         }
+
+
     }
 }
