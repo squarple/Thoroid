@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using static System.Math;
 
 namespace Thoroid.Rendering
 {
@@ -62,6 +63,28 @@ namespace Thoroid.Rendering
                         coordList[i] = coordList[j];
                         coordList[j] = temp;
                     }
+                }
+            }
+
+            for (int i = coordList.Count - 1; i >= 0; i--)
+            {
+                var polygon = coordList[i];
+
+                var a = polygon.GetNormalVector();
+                var b = new Points()
+                {
+                    X = viewPoint.X - (polygon.Points[0].X + polygon.Points[1].X + polygon.Points[2].X + polygon.Points[3].X) / 4,
+                    Y = viewPoint.Y - (polygon.Points[0].Y + polygon.Points[1].Y + polygon.Points[2].Y + polygon.Points[3].Y) / 4,
+                    Z = viewPoint.Z - (polygon.Points[0].Z + polygon.Points[1].Z + polygon.Points[2].Z + polygon.Points[3].Z) / 4,
+                };
+
+                var scalarMult = a.X * b.X + a.Y * b.Y + a.Z * b.Z;
+                var moduleMult = Sqrt(Pow(a.X, 2) + Pow(a.Y, 2) + Pow(a.Z, 2)) * 
+                                        Sqrt(Pow(b.X, 2) + Pow(b.Y, 2) + Pow(b.Z, 2));
+                var cos = scalarMult / moduleMult;
+                if (cos > 0)
+                {
+                    coordList.RemoveAt(i);
                 }
             }
 
