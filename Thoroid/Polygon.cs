@@ -20,7 +20,7 @@ namespace Thoroid
         }
 
         public int[] ZArray { get; set; }
-        public Points midpoint { get; }
+        public Points midpoint { get; set; }
 
         public Polygon(Points point1, Points point2, Points point3, Points point4)
         {
