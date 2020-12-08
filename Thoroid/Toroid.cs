@@ -125,7 +125,7 @@ namespace Thoroid
                     transformPoints[i, j] = transformPoints[i, j].ProfileProjection();
                 }
             }
-            DrawType(ref transformPoints, new Points(0,0,1000), false);
+            DrawType(ref transformPoints, new Points(0,0,-1000), false);
         }
 
         private void HorizontalRendering()
@@ -138,7 +138,7 @@ namespace Thoroid
                     transformPoints[i, j] = transformPoints[i, j].HorizontalProjection();
                 }
             }
-            DrawType(ref transformPoints, new Points(0,0,1000), false);
+            DrawType(ref transformPoints, new Points(0,0,-1000), false);
         }
 
         private void ObliqueRendering()

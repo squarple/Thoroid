@@ -84,7 +84,7 @@ namespace Thoroid.Rendering
                 var moduleMult = Sqrt(Pow(a.X, 2) + Pow(a.Y, 2) + Pow(a.Z, 2)) * 
                                         Sqrt(Pow(b.X, 2) + Pow(b.Y, 2) + Pow(b.Z, 2));
                 var cos = scalarMult / moduleMult;
-                if (cos < 0d)
+                if (cos < -0.4d)
                 {
                     coordList.RemoveAt(i);
                 }
