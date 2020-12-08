@@ -65,7 +65,9 @@ namespace Thoroid.Rendering
                     }
                 }
             }
-
+            //viewPoint = new Points(0,0,-1000);
+            
+            #region Удаление лишних полигонов с помощью вектора
             for (int i = coordList.Count - 1; i >= 0; i--)
             {
                 var polygon = coordList[i];
@@ -82,11 +84,12 @@ namespace Thoroid.Rendering
                 var moduleMult = Sqrt(Pow(a.X, 2) + Pow(a.Y, 2) + Pow(a.Z, 2)) * 
                                         Sqrt(Pow(b.X, 2) + Pow(b.Y, 2) + Pow(b.Z, 2));
                 var cos = scalarMult / moduleMult;
-                if (cos > 0)
+                if (cos < 0d)
                 {
                     coordList.RemoveAt(i);
                 }
             }
+            #endregion
 
             if (isPerspective)
             {
