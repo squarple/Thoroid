@@ -107,12 +107,12 @@ namespace Thoroid
 
         private void UsualRendering()
         {
-            DrawType(ref realPoints, new Points(0,0,1000), false);
+            DrawType(ref realPoints, new Points(0,0,-1000), false);
         }
 
         private void OrthogonalRendering()
         {
-            DrawType(ref realPoints, new Points(0,0,1000), false);
+            DrawType(ref realPoints, new Points(0,0,-1000), false);
         }
 
         private void ProfileRendering()
@@ -153,7 +153,7 @@ namespace Thoroid
                     transformPoints[i, j] = transformPoints[i, j].ObliqueProjection();
                 }
             }
-            DrawType(ref transformPoints, new Points(0,0,1000), false);
+            DrawType(ref transformPoints, new Points(0,0,-1000), false);
         }
 
         private void AxonometricRendering()
@@ -168,7 +168,7 @@ namespace Thoroid
                     transformPoints[i, j] = transformPoints[i, j].AxonometryProjection();
                 }
             }
-            DrawType(ref transformPoints, new Points(0,0,1000), false);
+            DrawType(ref transformPoints, new Points(0,0,-1000), false);
         }
 
         private void PerspectiveRendering()
@@ -185,13 +185,13 @@ namespace Thoroid
                 }
             }
 
-            Points lp = new Points()
-            {
-                X = Data.PerspectiveRo * Sin(Data.PerspectivePhi.DegToRad()) * Cos(Data.PerspectiveTheta.DegToRad()),
-                Y = Data.PerspectiveRo * Sin(Data.PerspectivePhi.DegToRad()) * Sin(Data.PerspectiveTheta.DegToRad()),
-                Z = Data.PerspectiveRo * Cos(Data.PerspectivePhi.DegToRad()),
-            };
-            DrawType(ref transformPoints, lp, true);
+            //Points lp = new Points()
+            //{
+            //    X = Data.PerspectiveRo * Sin(Data.PerspectivePhi.DegToRad()) * Cos(Data.PerspectiveTheta.DegToRad()),
+            //    Y = Data.PerspectiveRo * Sin(Data.PerspectivePhi.DegToRad()) * Sin(Data.PerspectiveTheta.DegToRad()),
+            //    Z = Data.PerspectiveRo * Cos(Data.PerspectivePhi.DegToRad()),
+            //};
+            DrawType(ref transformPoints, new Points(0,0,1000), true);
         }
 
         private void DrawType(ref Points[,] points, Points viewPoint, bool isPerspective)
